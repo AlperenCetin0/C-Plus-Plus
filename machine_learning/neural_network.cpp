@@ -64,7 +64,7 @@ double sigmoid(const double &x) { return 1.0 / (1.0 + std::exp(-x)); }
  * @param X Value
  * @return Returns derivative of sigmoid(x)
  */
-double dsigmoid(const double &x) { return x * (1 - x); }
+double dsigmoid(const double y) { return y * (1 - y); }
 
 /**
  * Relu function
@@ -144,7 +144,7 @@ class DenseLayer {
         // Choosing activation (and it's derivative)
         if (activation == "sigmoid") {
             activation_function = neural_network::activations::sigmoid;
-            dactivation_function = neural_network::activations::sigmoid;
+            dactivation_function = neural_network::activations::dsigmoid;
         } else if (activation == "relu") {
             activation_function = neural_network::activations::relu;
             dactivation_function = neural_network::activations::drelu;
@@ -185,7 +185,7 @@ class DenseLayer {
         // Choosing activation (and it's derivative)
         if (activation == "sigmoid") {
             activation_function = neural_network::activations::sigmoid;
-            dactivation_function = neural_network::activations::sigmoid;
+            dactivation_function = neural_network::activations::dsigmoid;
         } else if (activation == "relu") {
             activation_function = neural_network::activations::relu;
             dactivation_function = neural_network::activations::drelu;
